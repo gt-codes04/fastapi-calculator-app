@@ -1,0 +1,25 @@
+@'
+# Virtual envs
+.venv/
+venv/
+
+# Python cache & build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+dist/
+build/
+
+# Playwright/pytest artifacts
+playwright-report/
+test-results/
+server.log
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+'@ | Set-Content .gitignore

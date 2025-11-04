@@ -1,22 +1,15 @@
 import logging
-from pathlib import Path
+from logging.config import dictConfig
 
-# Create logs directory if it doesn't exist
-log_dir = Path("logs")
-log_dir.mkdir(exist_ok=True)
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("logs/calculator.log"),
-        logging.StreamHandler()
-    ]
-)
-
-# Create logger instance
-logger = logging.getLogger("calculator")
-
-def get_logger():
-    return logger
+def configure_logging(level: str = "INFO") -> None:
+    dictConfig({
+        "version": 1,
+        "formatters": {
+            "std": {"format": "%(asctime)s %(levelname)s [%(name)s] %(message)s"}
+        },
+        "handlers": {
+            "console": {"class": "logging.StreamHandler", "formatter": "std"}
+        },
+        "root": {"level": level, "handlers": ["console"]},
+        "disable_existing_loggers": False,
+    })

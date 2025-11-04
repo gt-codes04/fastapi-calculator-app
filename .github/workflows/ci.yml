@@ -39,6 +39,9 @@ jobs:
         uvicorn app.main:app --host 0.0.0.0 --port 8000 &
         sleep 5  # Wait for server to start
     
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+    
     - name: Run E2E tests
       run: |
         pytest tests/e2e/

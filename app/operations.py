@@ -1,17 +1,13 @@
-def add(x: float, y: float) -> float:
-    """Add two numbers."""
-    return x + y
+def add(a: float, b: float) -> float:
+    return a + b
 
-def subtract(x: float, y: float) -> float:
-    """Subtract y from x."""
-    return x - y
+def sub(a: float, b: float) -> float:
+    return a - b
 
-def multiply(x: float, y: float) -> float:
-    """Multiply two numbers."""
-    return x * y
+def mul(a: float, b: float) -> float:
+    return a * b
 
-def divide(x: float, y: float) -> float:
-    """Divide x by y."""
-    if y == 0:
-        raise ZeroDivisionError("Division by zero is not allowed")
-    return x / y
+def div(a: float, b: float) -> float:
+    if b == 0:
+        raise ZeroDivisionError("division by zero")
+    return a / b

@@ -1,26 +1,25 @@
+import math
 import pytest
-from app.operations import add, subtract, multiply, divide
+from app import operations as op
 
-def test_add():
-    assert add(2, 3) == 5
-    assert add(-1, 1) == 0
-    assert add(0, 0) == 0
+def test_add_basic():
+    assert op.add(2, 3) == 5
 
-def test_subtract():
-    assert subtract(5, 3) == 2
-    assert subtract(1, 1) == 0
-    assert subtract(0, 5) == -5
+def test_sub_negative():
+    assert op.sub(2, 5) == -3
 
-def test_multiply():
-    assert multiply(2, 3) == 6
-    assert multiply(-2, 3) == -6
-    assert multiply(0, 5) == 0
+def test_mul_zero():
+    assert op.mul(10, 0) == 0
 
-def test_divide():
-    assert divide(6, 2) == 3
-    assert divide(5, 2) == 2.5
-    assert divide(0, 5) == 0
+def test_mul_floats():
+    assert math.isclose(op.mul(2.5, 4.2), 10.5, rel_tol=1e-9)
 
-def test_divide_by_zero():
+def test_div_basic():
+    assert op.div(10, 2) == 5
+
+def test_div_float():
+    assert math.isclose(op.div(3, 2), 1.5, rel_tol=1e-9)
+
+def test_div_by_zero():
     with pytest.raises(ZeroDivisionError):
-        divide(5, 0)
+        op.div(1, 0)
